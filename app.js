@@ -18,8 +18,15 @@ const morgan = require("morgan");
 const app = express();
 
 // app.use(cors());
+const allowedOrigins = ["http://localhost:5173", "https://jobly-dsru.onrender.com"];
 app.use(cors({
-  origin: "https://jobly-dsru.onrender.com/",  // Replace with your frontend's URL
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: "GET,POST,PATCH,DELETE,OPTIONS",
   allowedHeaders: "Content-Type, Authorization"
 }));
