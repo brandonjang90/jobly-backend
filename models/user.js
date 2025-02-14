@@ -1,7 +1,7 @@
 "use strict";
 
 const db = require("../db");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const { sqlForPartialUpdate } = require("../helpers/sql");
 const {
   NotFoundError,
@@ -72,7 +72,7 @@ class User {
       throw new BadRequestError(`Duplicate username: ${username}`);
     }
 
-    const hashedPassword = await bcrypt.hash(password, Number(BCRYPT_WORK_FACTOR) || 12);
+    const hashedPassword = await bcrypt.hash(password, 12);
 
     const result = await db.query(
           `INSERT INTO users
