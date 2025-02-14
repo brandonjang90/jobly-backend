@@ -19,7 +19,7 @@ const app = express();
 
 // app.use(cors());
 app.use(cors({
-  origin: "http://localhost:5173",  // Replace with your frontend's URL
+  origin: "https://jobly-dsru.onrender.com/",  // Replace with your frontend's URL
   methods: "GET,POST,PATCH,DELETE,OPTIONS",
   allowedHeaders: "Content-Type, Authorization"
 }));
