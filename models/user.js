@@ -72,7 +72,7 @@ class User {
       throw new BadRequestError(`Duplicate username: ${username}`);
     }
 
-    const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
+    const hashedPassword = await bcrypt.hash(password, Number(BCRYPT_WORK_FACTOR));
 
     const result = await db.query(
           `INSERT INTO users
